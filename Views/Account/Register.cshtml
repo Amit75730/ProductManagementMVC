@@ -1,0 +1,41 @@
+﻿@model ProductManagementMVC.Models.UserRegisterViewModel
+
+@{
+    ViewData["Title"] = "Register";
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-4">
+        <h2 class="text-center">Register</h2>
+
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <div class="alert alert-success text-center">@TempData["SuccessMessage"]</div>
+        }
+
+        @if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+        {
+            <div class="alert alert-danger text-center">@ViewBag.ErrorMessage</div>
+        }
+
+        <form asp-action="Register" method="post">
+            <div class="mb-3">
+                <label>Name</label>
+                <input asp-for="Name" class="form-control" required />
+            </div>
+            <div class="mb-3">
+                <label>Email</label>
+                <input asp-for="Email" class="form-control" required />
+            </div>
+            <div class="mb-3">
+                <label>Password</label>
+                <input asp-for="Password" type="password" class="form-control" required />
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Register</button>
+        </form>
+
+        <p class="text-center mt-3">
+            Already have an account? <a asp-action="Login">Login here</a>
+        </p>
+    </div>
+</div>
